@@ -1,0 +1,107 @@
+import java.util.*;
+class Train
+{
+    private String trainName;
+    private int availableSeats;
+    String name;
+    int age;
+    static int count=1;
+    static int seats=50;
+    Train()
+    {
+        
+    }
+    Train(String name,int age)
+    {
+        this.name=name;
+        this.age=age;
+    }
+    public void setA(String trainName)
+    {
+        this.trainName=trainName;
+    }
+    public String getA()
+    {
+        return trainName;
+    }
+    public void setB(int availableSeats)
+    {
+        this.availableSeats=availableSeats;
+    }
+    public int getB()
+    {
+        return availableSeats;
+    }
+    void bookTicket()
+    {
+        
+       System.out.println(name+"          "+age+"          "+"          "+count);
+       count++;
+       
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		 int d=50;
+        System.out.println("****************************************************************");
+        System.out.println("\t\tWelcome to the Railway Ticket Reservation!");
+        System.out.println("****************************************************************");
+        while(true)
+        {
+        System.out.println("Please choose an option:");
+		System.out.println("1.Book a ticket");
+		System.out.println("2.Exit");
+		int c=sc.nextInt();
+		switch(c){
+		    case 1:
+		        Train tra=new Train();
+		        System.out.println("Enter the Train Name:");
+		        String q=sc.next();
+		        tra.setA(q);
+		        System.out.println("Enter the number of tickets you want to book:");
+		        int r=sc.nextInt();
+		        Train t[]=new Train[r];
+		        for(int i=0;i<r;i++)
+		        {
+		            System.out.printf("Passenger %d Details:\n",i+1);
+		            String name=sc.next();
+		            int age=sc.nextInt();
+		            t[i]=new Train(name,age);
+		        }
+		        System.out.println("****************************************************************");
+		        System.out.println("\t\tYour Ticket Details");
+		        System.out.println("****************************************************************");
+                System.out.println("\t\tTrain Name:"+tra.getA());
+                System.out.println("****************************************************************");
+                System.out.println("\t\tPassenger Details");
+                System.out.println("****************************************************************");
+                System.out.println("Passenger Name"+"  "+"Passenger Age"+"  "+"Seat number");
+                
+		        for(int i=0;i<r;i++)
+		        {
+		            t[i].bookTicket();
+		            
+		        }
+		       
+		        System.out.println("****************************************************************");
+		        System.out.println("Ticket(s) booked successfully!");
+		        System.out.println("Seats remaining:"+(d-r));
+		        System.out.println("****************************************************************");
+		        System.out.println("\t\tThank you for using the Ticket Reservation System.");
+		        System.out.println("****************************************************************");
+		        d=d-r;
+		        break;
+		    case 2:
+		        System.out.println("Thank you for using the Ticket Reservation System.Goodbye!");
+		        break;
+		   default:
+		   System.out.println("");
+		}
+		if(c!=1)
+		break;
+		
+        }
+	}
+}
